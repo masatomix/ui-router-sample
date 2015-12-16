@@ -22,18 +22,35 @@ angular
     $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/main',
         views: {
           containerView: {
+            templateUrl: 'views/container.html',
+            controller: 'MainCtrl'
+          }
+        }
+      })
+      .state('main.main', {
+        url: '/mainMain',
+        views: {
+          headerView: {
+            templateUrl: 'views/header.html',
+            controller: 'MainCtrl'
+          },
+          mainView: {
             templateUrl: 'views/main.html',
             controller: 'MainCtrl'
           }
         }
       })
-      .state('about', {
+      .state('main.about', {
         url: '/about',
         views: {
-          containerView: {
+          headerView: {
+            templateUrl: 'views/header.html',
+            controller: 'MainCtrl'
+          },
+          mainView: {
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
           }
