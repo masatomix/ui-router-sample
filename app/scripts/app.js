@@ -21,8 +21,8 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-      .state('main', {
-        url: '/main',
+      .state('default', {
+        url: '',
         views: {
           containerView: {
             templateUrl: 'views/container.html',
@@ -30,8 +30,8 @@ angular
           }
         }
       })
-      .state('main.main', {
-        url: '/mainMain',
+      .state('default.main', {
+        url: '/',
         views: {
           headerView: {
             templateUrl: 'views/header.html',
@@ -39,11 +39,11 @@ angular
           },
           mainView: {
             templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
+            controller: 'AboutCtrl'
           }
         }
       })
-      .state('main.about', {
+      .state('default.about', {
         url: '/about',
         views: {
           headerView: {
