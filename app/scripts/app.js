@@ -19,7 +19,7 @@ angular
     'ui.router'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/contents1');
     $stateProvider
       .state('default', {
         url: '',
@@ -31,7 +31,7 @@ angular
         }
       })
       .state('default.main', {
-        url: '/',
+        url: '',
         views: {
           headerView: {
             templateUrl: 'views/header.html',
@@ -39,7 +39,33 @@ angular
           },
           mainView: {
             templateUrl: 'views/main.html',
-            controller: 'AboutCtrl'
+            controller: 'MainCtrl'
+          }
+        }
+      })
+      .state('default.main.contents1', {
+        url: '/contents1',
+        views: {
+          menuView: {
+            templateUrl: 'views/menu.html',
+            controller: 'MainCtrl'
+          },
+          contentsView: {
+            templateUrl: 'views/contents1.html',
+            controller: 'MainCtrl'
+          }
+        }
+      })
+      .state('default.main.contents2', {
+        url: '/contents2',
+        views: {
+          menuView: {
+            templateUrl: 'views/menu.html',
+            controller: 'MainCtrl'
+          },
+          contentsView: {
+            templateUrl: 'views/contents2.html',
+            controller: 'MainCtrl'
           }
         }
       })

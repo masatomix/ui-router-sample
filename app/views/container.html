@@ -3,15 +3,18 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
+<div id="site">
+
+<div id="header">
 <div ui-view="headerView"></div>
-
-
-<div class="container">
-<div ui-view="mainView"></div>
 </div>
 
-<div class="footer">
+<div ui-view="mainView"></div>
+
+<div id="footer">
   <div class="container">
     <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
   </div>
+</div>
+
 </div>
