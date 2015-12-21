@@ -82,6 +82,24 @@ angular
           }
         }
       })
+  }])
+  .config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push(
+      ['$q','$window', function ($q,$window) {
+        return {
+          'request': function (config) {
+            console.log('request!!');
+            return config;
+          },
+          'responseError': function (rejection) {
+            console.log('responseError!!');
+            $window.alert(rejection.status);
+            location.href='#/contents2';
+            return $q.reject(rejection);
+          }
+        }
+      }]
+    );
   }]);
 //.config(function ($routeProvider) {
 //  $routeProvider

@@ -15,7 +15,7 @@ angular.module('uiRouterSampleApp')
       'Karma'
     ];
     console.log('before');
-    WeatherServices.getWeather();
+    //WeatherServices.getWeather();
     console.log('after');
 
 
