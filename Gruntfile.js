@@ -7,6 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
@@ -14,6 +15,8 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+
+  var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
   // Configurable paths for the application
   var appConfig = {
@@ -71,11 +74,20 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+          // `localhost:9000/ajax`へのリクエストは`localhost:3000/ajax`へプロキシされるようになる
+          context: '/ajax/',
+          host: 'localhost',
+          port: 3000
+        }
+      ],
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
             return [
+              proxySnippet,
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -179,23 +191,23 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath: /\.\.\//
       },
       test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
-        ignorePath:  /\.\.\//,
-        fileTypes:{
+        ignorePath: /\.\.\//,
+        fileTypes: {
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-              detect: {
-                js: /'(.*\.js)'/gi
-              },
-              replace: {
-                js: '\'{{filePath}}\','
-              }
+            detect: {
+              js: /'(.*\.js)'/gi
+            },
+            replace: {
+              js: '\'{{filePath}}\','
             }
           }
+        }
       },
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -432,10 +444,11 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'configureProxies',
       'autoprefixer:server',
       'connect:livereload',
       'stubby',
-      'watch
+      'watch'
     ]);
   });
 
