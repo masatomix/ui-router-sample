@@ -1,0 +1,10 @@
+-
+  request:
+    url: ^/ajax/sample1/1234$
+    method: GET
+  response:
+    -
+      status: 200
+      headers:
+        content-type: application/json
+      file: mocks/stubby/hoge/sample1.json

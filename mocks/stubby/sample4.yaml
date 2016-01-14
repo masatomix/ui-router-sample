@@ -1,0 +1,10 @@
+-
+  request:
+    url: ^/ajax/sample4/(([a-z]{3})-([0-9]{3}))$
+    method: GET
+  response:
+    -
+      status: 200
+      headers:
+        content-type: text/html
+      file: mocks/stubby/hoge/sample4.html
