@@ -9,11 +9,6 @@
  */
 angular.module('uiRouterSampleApp')
   .factory('WeatherServices', ['$resource', function ($resource) {
-    // Service logfic
-    // ...
-
-    var meaningOfLife = 42;
-
     // Public API here
     return $resource('http://weather.olp.yahooapis.jp/v1/place', {}, {
       getWeather: {
@@ -29,11 +24,63 @@ angular.module('uiRouterSampleApp')
     })
   }]);
 
-//angular.module('uiRouterSampleApp')
-//  .factory('WeatherServices1', ['$http', '$routeParam', '$q', function ($http, $routeParam, $q) {
-//
-//    function callAjax()
-//  }
-//
-//}])
-//;
+
+angular.module('uiRouterSampleApp')
+  .factory('WeatherServices2', ['$http', '$routeParams', '$q',
+    function ($http, $routeParams, $q) {
+      function callAjax(method, url) {
+        //var result = {};
+        //$http({
+        //    method: method,
+        //    url: url
+        //}).success(function (data) {
+        //    angular.extend(result, data);
+        //});
+        //return result;
+
+        //var def =$q.defer();
+        //$http({
+        //    method: method,
+        //    url: url
+        //}).success(function(data) {
+        //def.resolve(data);
+        //});
+        //return def.promise;
+
+
+        var promise = $http({
+          method: method,
+          url: url
+        });
+        return promise;
+      }
+
+      return {
+        getWeather1: function () {
+          var method = 'GET';
+          var url = '/api/getwether1.json';
+          return callAjax(method, url);
+        },
+        getWeather2: function () {
+          var method = 'GET';
+          var url = '/api/getwether2.json';
+          return callAjax(method, url);
+        },
+        getWeather3: function () {
+          var method = 'GET';
+          var url = '/api/getwether3.json';
+          return callAjax(method, url);
+        }
+        //getStock: function (code) {
+        //  var method = 'JSONP';
+        //  var url = 'http://172.127.53.214/api/s/2400/stocks/' + code + '/attribute.json?callback=JSON_CALLBACK';
+        //  return callAjax(method, url);
+        //},
+        //
+        //getStockSettlementInfoList: function (code) {
+        //  var method = 'JSONP';
+        //  var url = 'http://172.127.53.214/api/s/2400/stocks/' + code + '/settlementinfolist.json?callback=JSON_CALLBACK';
+        //  return callAjax(method, url);
+        //}
+      };
+    }]);
