@@ -80,7 +80,13 @@ module.exports = function (grunt) {
           context: '/ajax/',
           host: 'localhost',
           port: 3000
+        },
+        {
+          context: '/api/',
+          host: 'localhost',
+          port: 3000
         }
+
       ],
       livereload: {
         options: {

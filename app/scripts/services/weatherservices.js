@@ -28,3 +28,12 @@ angular.module('uiRouterSampleApp')
       }
     })
   }]);
+
+//angular.module('uiRouterSampleApp')
+//  .factory('WeatherServices1', ['$http', '$routeParam', '$q', function ($http, $routeParam, $q) {
+//
+//    function callAjax()
+//  }
+//
+//}])
+//;
