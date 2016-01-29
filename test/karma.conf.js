@@ -58,6 +58,7 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
+      'karma-coverage',
       'karma-jasmine'
     ],
 
@@ -77,5 +78,10 @@ module.exports = function(config) {
     // },
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
+
+    preprocessors: { 'app/scripts/**/*.js': 'coverage' },
+// test results reporter to use
+// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+reporters: ['progress', 'coverage'],
   });
 };
