@@ -1,0 +1,14 @@
+-
+  request:
+    url: ^/ajax/sample3/(([a-z]{3})-([0-9]{3}))$
+    method: GET
+  response:
+    -
+      status: 200
+      headers:
+        content-type: text/html
+      body:
+        URL0 [<% url[0] %>] <br />
+        URL1 [<% url[1] %>] <br />
+        URL2 [<% url[2] %>] <br />
+        URL3 [<% url[3] %>] <br />

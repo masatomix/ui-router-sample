@@ -2,21 +2,16 @@
 
 /**
  * @ngdoc function
- * @name uiRouterSampleApp.controller:MainCtrl
+ * @name uiRouterSampleApp.controller:MenuctrlCtrl
  * @description
- * # MainCtrl
+ * # MenuctrlCtrl
  * Controller of the uiRouterSampleApp
  */
 angular.module('uiRouterSampleApp')
-  .controller('MainCtrl', function ($scope, WeatherServices) {
+  .controller('MenuCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    console.log('before');
-    //WeatherServices.getWeather();
-    console.log('after');
-
-
   });

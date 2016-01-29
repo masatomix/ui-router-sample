@@ -1,0 +1,10 @@
+-
+  request:
+    url: ^/api/weather3.json$
+    method: GET
+  response:
+    -
+      status: 401
+      headers:
+        content-type: application/json
+      file: mocks/stubby/hoge/weather2.json
