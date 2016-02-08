@@ -16,23 +16,23 @@ angular.module('uiRouterSampleApp')
         //    console.log(getsetservice.data2);
         //}
         $scope.$storage1 = $localStorage.$default({
-            data3: 'a'
+            ctrl_localData2: 'localDef'
         });
         $scope.$storage2 = $sessionStorage.$default({
-            sessionData2: 'a'
+            ctrl_sessionData2: 'sessionDef'
         });
 
-        $scope.data = getsetservice.data2;
+        $scope.localData1 = getsetservice.localData1;
         $scope.sessionData1 = getsetservice.sessionData1;
 
         $scope.onClick = function () {
-            getsetservice.data2 = $scope.data;
+            getsetservice.localData1 = $scope.localData1;
             getsetservice.sessionData1 = $scope.sessionData1;
-            console.log(getsetservice.data2);
+            console.log(getsetservice.localData1);
             console.log(getsetservice.sessionData1);
 
-            $scope.$storage1.data3 = $scope.data;
-            $scope.$storage2.sessionData2 = $scope.sessionData1;
+            $scope.$storage1.ctrl_localData2 = $scope.localData1;
+            $scope.$storage2.ctrl_sessionData2 = $scope.sessionData1;
 
         }
     });

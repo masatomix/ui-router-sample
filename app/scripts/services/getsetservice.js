@@ -20,21 +20,21 @@ angular.module('uiRouterSampleApp')
                 this._data1 = val;
             },
 
-            get data2() {
+            get localData1() {
                 console.log('local storage getter!!');
-                return $localStorage.data2;
+                return $localStorage._localData1;
             },
-            set data2(val) {
+            set localData1(val) {
                 console.log('local storage setter!!');
-                $localStorage.data2 = val;
+                $localStorage._localData1 = val;
             },
             get sessionData1() {
                 console.log('session storage getter!!');
-                return $sessionStorage.sessionData1;
+                return $sessionStorage._sessionData1;
             },
             set sessionData1(val) {
                 console.log('session storage setter!!');
-                $sessionStorage.sessionData1 = val;
+                $sessionStorage._sessionData1 = val;
             }
         };
     });
