@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ngStorage'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/contents1');
@@ -86,12 +87,25 @@ angular
         url: '/contents4',
         views: {
           menuView: {
+               templateUrl: 'views/menu.html',
+                  controller: 'MenuCtrl'
+              },
+              contentsView: {
+                  templateUrl: 'views/contents4.html',
+                  controller: 'Main4Ctrl'
+              }
+          }
+      })
+      .state('default.main.contents5', {
+        url: '/contents5',
+        views: {
+          menuView: {
             templateUrl: 'views/menu.html',
             controller: 'MenuCtrl'
           },
           contentsView: {
-            templateUrl: 'views/contents4.html',
-            controller: 'Main4Ctrl'
+            templateUrl: 'views/contents5.html',
+            controller: 'Menu5Ctrl'
           }
         }
       })

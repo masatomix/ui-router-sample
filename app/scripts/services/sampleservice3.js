@@ -16,6 +16,8 @@ angular.module('uiRouterSampleApp')
           value2: "2",
           value3: "3"
         };
+        console.log('aaa');
+        console.log(ret);
         return ret;
       },
       someMethod2: function () {

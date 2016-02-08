@@ -12,7 +12,10 @@ describe('Service: SampleService3', function () {
   }));
 
   it('should do something', function () {
-    expect(!!SampleService3).toBe(true);
+
+    SampleService3.someMethod1();
+    SampleService3.someMethod1();
+    //expect(!!SampleService3).toBe(true);
   });
 
 });

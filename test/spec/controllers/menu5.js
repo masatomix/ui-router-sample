@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: Main3Ctrl', function () {
+describe('Controller: Menu5Ctrl', function () {
 
   // load the controller's module
   beforeEach(module('uiRouterSampleApp'));
 
-  var Main3Ctrl,
+  var Menu5Ctrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    Main3Ctrl = $controller('Main3Ctrl', {
+    Menu5Ctrl = $controller('Menu5Ctrl', {
       $scope: scope
     });
   }));
