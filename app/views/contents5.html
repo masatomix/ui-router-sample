@@ -2,6 +2,8 @@
     <!--    <p><input type='text' ng-model="data.value1"/></p>
         {{data|json}} -->
     <p><input type='text' ng-model="data"/></p>
-        {{data|json}}
-    <p><input type="button" ng-click="onClick(data)" value="someMethod"/></p>
+    localStorage: {{data|json}} <br />
+    <p><input type='text' ng-model="sessionData1"/></p>
+    sessionStorage: {{sessionData1|json}}
+    <p><input type="button" ng-click="onClick()" value="someMethod"/></p>
 </div>
