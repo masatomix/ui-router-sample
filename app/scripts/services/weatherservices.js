@@ -58,17 +58,17 @@ angular.module('uiRouterSampleApp')
       return {
         getWeather1: function () {
           var method = 'GET';
-          var url = '/api/getwether1.json';
+          var url = '/api/weather1.json';
           return callAjax(method, url);
         },
         getWeather2: function () {
           var method = 'GET';
-          var url = '/api/getwether2.json';
+          var url = '/api/weather2.json';
           return callAjax(method, url);
         },
         getWeather3: function () {
           var method = 'GET';
-          var url = '/api/getwether3.json';
+          var url = '/api/weather3.json';
           return callAjax(method, url);
         }
         //getStock: function (code) {

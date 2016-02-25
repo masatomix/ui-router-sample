@@ -20,10 +20,10 @@ angular
     'ngStorage'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/contents1');
+    $urlRouterProvider.otherwise('/container/main/contents1');
     $stateProvider
       .state('default', {
-        url: '',
+        url: '/container',
         views: {
           containerView: {
             templateUrl: 'views/container.html',
@@ -32,7 +32,7 @@ angular
         }
       })
       .state('default.main', {
-        url: '',
+        url: '/main',
         views: {
           headerView: {
             templateUrl: 'views/header.html',
@@ -109,6 +109,20 @@ angular
           }
         }
       })
+        .state('default.main.contents6', {
+            url: '/contents6',
+            views: {
+                menuView: {
+                    templateUrl: 'views/menu.html',
+                    controller: 'MenuCtrl'
+                },
+                contentsView: {
+                    templateUrl: 'views/contents6.html',
+                    controller: 'Menu6Ctrl'
+                }
+            }
+        })
+
       .state('default.about', {
         url: '/about',
         views: {
