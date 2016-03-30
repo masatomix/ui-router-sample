@@ -123,6 +123,19 @@ angular
             }
         })
 
+        .state('default.main.contents7', {
+            url: '/contents7',
+            views: {
+                menuView: {
+                    templateUrl: 'views/menu.html',
+                    controller: 'MenuCtrl'
+                },
+                contentsView: {
+                    templateUrl: 'views/contents6.html',
+                    controller: 'Menu7Ctrl'
+                }
+            }
+        })
       .state('default.about', {
         url: '/about',
         views: {

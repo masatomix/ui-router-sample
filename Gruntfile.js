@@ -85,6 +85,14 @@ module.exports = function (grunt) {
           context: '/api/',
           host: 'localhost',
           port: 3000
+        },
+        {
+          context: '/encl/password/',
+          host: 'localhost',
+          port: 8080,
+          rewrite:{
+            '^/encl/password/': '/encl-server/encl/password/'
+          }
         }
 
       ],
