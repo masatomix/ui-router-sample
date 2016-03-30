@@ -7,20 +7,43 @@ angular.module('uiRouterSampleApp')
         console.log(p1);
         var p2 = sampleRestService1.getWeather2();
         console.log(p2);
-        var p3 = sampleRestService1.getWeather3();
-        console.log(p3);
+        //var p3 = sampleRestService1.getWeather3();
+        //console.log(p3);
+        var p4 = sampleRestService1.getWeather4();
+        console.log(p4);
 
 
         // 非同期っぽく、callbackで値をセットする
-        sampleRestService1.getWeather1().then(function (data) {
+        p1.then(function (data) {
             $scope.result = data;
             console.log(data);
         });
+        p4.then(function (data) {
+            $scope.result1 = data[0];
+            $scope.result2 = data[1];
+            console.log(data);
+        });
     })
-    .factory('sampleRestService1', function ($resource, $sessionStorage) {
+    .factory('sharedService1', function () {
+        // Public API here
+        return {
+            isEmpty: function () {
+                return this._data1 == null;
+            },
+
+            get cacheData() {
+                console.log('getter!!');
+                return this._data1;
+            },
+            set cacheData(val) {
+                console.log('setter!!');
+                this._data1 = val;
+            }
+        };
+    })
+    .factory('sampleRestService1', function ($resource, $sessionStorage, $q) {
             // Public API here
-            var USER_URL = '/api/:weather.json';
-            var r = $resource(USER_URL,
+            var r = $resource('/api/:weather.json',
                 {},
                 {},
                 {stripTrailingSlashes: false}
@@ -37,6 +60,13 @@ angular.module('uiRouterSampleApp')
                 getWeather3: function () {
                     return r.get({weather: 'weather3'}).$promise;
                 },
+                getWeather4: function () {
+                    var promiseAll = $q.all([
+                        r.get({weather: 'weather1'}).$promise,
+                        r.get({weather: 'weather2'}).$promise
+                    ]);
+                    return promiseAll;
+                }
                 //login: function (postData) {
                 //    postData.status = '1';
                 //    var result = r.update(postData,
