@@ -22,7 +22,13 @@ angular.module('uiRouterSampleApp')
             $scope.result1 = sharedService1.cacheData1;
             $scope.result2 = sharedService1.cacheData2;
             console.log(data);
-        });
+        }
+,function(data){
+   console.log('失敗！');
+}
+
+
+);
     })
     .factory('sharedService1', function () {
 
@@ -53,7 +59,7 @@ angular.module('uiRouterSampleApp')
             // Public API here
             var r = $resource('/api/:weather.json',
                 {},
-                {},
+                {'get':{method: 'GET',timeout: 3500}}, // 3.5sでタイムアウトとした
                 {stripTrailingSlashes: false}
             );
 
@@ -89,7 +95,13 @@ console.log(result[0]);
   state=true;
 console.log("ホンモノデータを使う。そのあとキャッシュを生成");
 
-});
+}
+,function(result){
+ d.reject(result);// $q.all()の失敗を検知してメインのdeferも失敗とする
+}
+
+
+);
 
 }
                     return d.promise;
