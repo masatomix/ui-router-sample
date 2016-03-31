@@ -62,8 +62,7 @@ angular.module('uiRouterSampleApp')
                 {},
                 {
                     'get': {method: 'GET', timeout: 3500}// 3.5sでタイムアウトとした
-                },
-                {stripTrailingSlashes: false}
+                }
             );
 
             var state = false;
@@ -113,49 +112,6 @@ angular.module('uiRouterSampleApp')
                     }
                     return d.promise;
                 }
-                //login: function (postData) {
-                //    postData.status = '1';
-                //    var result = r.update(postData,
-                //        function () {
-                //            result.password = null;
-                //            $sessionStorage._userInfo = result;
-                //        }
-                //    );
-                //    return result;
-                //},
-                //
-
-                //logout: function () {
-                //    var userInfo = $sessionStorage._userInfo;
-                //    console.log(userInfo);
-                //    userInfo.status = '0';
-                //    var postData = {};
-                //    postData.status = userInfo.address;
-                //    postData.status = userInfo.status;
-                //    postData.sessionId = userInfo.sessionId;
-                //    postData.address = userInfo.address;
-                //
-                //    var result = r.update(postData, function () {
-                //            console.log("logout succsss");
-                //            $sessionStorage._userInfo = null;
-                //        }
-                //    );
-                //    return result;
-                //},
-                //
-                //isLogged: function () {
-                //    return !!$sessionStorage._userInfo;
-                //},
-                //
-                //get user() {
-                //    //return userInfo;
-                //    return $sessionStorage._userInfo;
-                //},
-                //set user(val) {
-                //    //userInfo = val;
-                //    $sessionStorage._userInfo = val;
-                //}
-
             }
         }
     )
