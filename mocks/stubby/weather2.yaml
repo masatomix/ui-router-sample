@@ -5,6 +5,7 @@
   response:
     -
       status: 200
+      latency: 5000
       headers:
         content-type: application/json
       file: mocks/stubby/hoge/weather2.json
