@@ -2,7 +2,7 @@
 
 
 angular.module('uiRouterSampleApp')
-    .controller('Menu7Ctrl', function (sampleRestService1, $scope) {
+    .controller('Menu7Ctrl', function (sampleRestService1, $scope,sharedService1) {
         var p1 = sampleRestService1.getWeather1();
         console.log(p1);
         var p2 = sampleRestService1.getWeather2();
@@ -19,29 +19,37 @@ angular.module('uiRouterSampleApp')
             console.log(data);
         });
         p4.then(function (data) {
-            $scope.result1 = data[0];
-            $scope.result2 = data[1];
+            $scope.result1 = sharedService1.cacheData1;
+            $scope.result2 = sharedService1.cacheData2;
             console.log(data);
         });
     })
     .factory('sharedService1', function () {
+
+        var data1;
+        var data2;
+
         // Public API here
         return {
             isEmpty: function () {
-                return this._data1 == null;
+                return this.data1 == null;
             },
 
-            get cacheData() {
-                console.log('getter!!');
-                return this._data1;
+            get cacheData1() {
+                return this.data1;
             },
-            set cacheData(val) {
-                console.log('setter!!');
-                this._data1 = val;
+            set cacheData1(val) {
+                this.data1 = val;
+            },
+            get cacheData2() {
+                return this.data2;
+            },
+            set cacheData2(val) {
+                this.data2 = val;
             }
         };
     })
-    .factory('sampleRestService1', function ($resource, $sessionStorage, $q) {
+    .factory('sampleRestService1', function ($resource, sharedService1, $q) {
             // Public API here
             var r = $resource('/api/:weather.json',
                 {},
@@ -49,6 +57,7 @@ angular.module('uiRouterSampleApp')
                 {stripTrailingSlashes: false}
             );
 
+        var state=false;
             // Resourceの戻り値。
             return {
                 getWeather1: function () {
@@ -60,12 +69,30 @@ angular.module('uiRouterSampleApp')
                 getWeather3: function () {
                     return r.get({weather: 'weather3'}).$promise;
                 },
+
+
                 getWeather4: function () {
+
+var d = $q.defer();
+if(state){
+console.log("キャッシュデータを使う");
+  d.resolve(sharedService1);
+}else{
                     var promiseAll = $q.all([
                         r.get({weather: 'weather1'}).$promise,
                         r.get({weather: 'weather2'}).$promise
-                    ]);
-                    return promiseAll;
+                    ]).then(function(result){
+console.log(result[0]);
+                        sharedService1.cacheData1=result[0];
+                        sharedService1.cacheData2=result[1];
+  d.resolve(sharedService1);
+  state=true;
+console.log("ホンモノデータを使う。そのあとキャッシュを生成");
+
+});
+
+}
+                    return d.promise;
                 }
                 //login: function (postData) {
                 //    postData.status = '1';
